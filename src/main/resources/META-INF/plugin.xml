@@ -1,0 +1,44 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.gaphunter.terraformiamprivesccompanion</id>
+    <name>Terraform IAM Privesc Companion</name>
+    <vendor>Gap Hunter Labs</vendor>
+    <description><![CDATA[
+        <p>Flags a Terraform <code>aws_iam_role</code> that can reach an
+        admin-equivalent role through a real, whole-project AssumeRole
+        trust chain -- not just an isolated wildcard statement in one
+        resource, a genuine multi-hop privilege-escalation path
+        (CWE-269), built by parsing EVERY <code>.tf</code> file in the
+        project into a directed graph (role trust edges, managed/inline
+        policy grants) and running a real BFS with cycle protection to
+        the nearest admin-equivalent role -- the same graph-reachability
+        idea PMapper/Cloudsplaining use against a live AWS account,
+        applied statically to source before <code>terraform apply</code>
+        ever runs.</p>
+        <p><b>Not a JSON parser</b> -- <code>jsonencode({...})</code>'s
+        argument is HCL map/list syntax, walked via brace/bracket
+        balancing, same technique as this catalog's own Terraform IAM
+        Wildcard Companion.</p>
+        <p>Stated honestly: v0.1 only resolves the direct HCL reference
+        form (<code>aws_iam_role.NAME.arn</code>/<code>.id</code>/
+        <code>.name</code>) for both trust-policy principals and
+        policy-attachment roles -- never a literal role name string,
+        never an interpolated local variable, never a cross-account ARN
+        with no matching in-project resource. A project with more than
+        300 <code>.tf</code> files skips whole-project analysis rather
+        than risk hanging the IDE.</p>
+        <p>Free. No license nags, no telemetry, no network calls.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection language=""
+            groupName="Terraform IAM Privesc Companion"
+            displayName="IAM role reaches admin via AssumeRole trust chain"
+            enabledByDefault="true"
+            level="WARNING"
+            implementationClass="dev.gaphunter.terraformiamprivesccompanion.inspection.IamPrivescInspection"/>
+        <notificationGroup id="Terraform IAM Privesc Companion" displayType="BALLOON"/>
+    </extensions>
+</idea-plugin>
