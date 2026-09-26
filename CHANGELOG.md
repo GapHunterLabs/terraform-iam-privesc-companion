@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+## [0.1.1]
+
+### Fixed
+
+- Review/star CTA now links to this plugin's own Marketplace
+  reviews page instead of the vendor's generic plugin list.
+
 ## [0.1.0]
 
 ### Added
@@ -15,5 +22,6 @@
   (`AdministratorAccess`), a referenced `aws_iam_policy` full-wildcard
   document, or an inline `aws_iam_role_policy` of the same shape.
 
-[Unreleased]: https://github.com/GapHunterLabs/terraform-iam-privesc-companion/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/terraform-iam-privesc-companion/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/GapHunterLabs/terraform-iam-privesc-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/terraform-iam-privesc-companion/commits/0.1.0
