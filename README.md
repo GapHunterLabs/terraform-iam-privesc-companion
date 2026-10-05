@@ -10,10 +10,12 @@ Wildcard Companion) is one thing; a genuine multi-hop privilege-
 escalation path across several roles is a different, more dangerous
 finding entirely (CWE-269) -- the same technique Rhino Security Labs'
 well-known IAM privilege-escalation research and the IAM-Vulnerable
-benchmark document, and that PMapper/Cloudsplaining exist to find.
-Both of those are CLI tools that query a live, already-deployed AWS
-account (PMapper via `boto3`) -- neither is a static, account-less, IDE
-inspection over IaC source, before `terraform apply` ever runs. No
+benchmark document. PMapper builds that role-to-role graph by querying
+a live, already-deployed AWS account (via `boto3`); Cloudsplaining can
+also scan a single policy file offline and flags known escalation
+methods in it, but it does not build a role-to-role graph. Both are CLI
+tools -- neither is an IDE inspection that follows escalation paths
+across roles in IaC source, before `terraform apply` ever runs. No
 dedicated Marketplace plugin found for this exact angle.
 
 ## Why built this way
@@ -65,10 +67,12 @@ AssumeRole path to an admin-equivalent role anywhere else in the
 project -- the role's declaration line shows a warning naming the full
 path.
 
-## Enterprise / Team Licensing
+## Support
 
-Need enterprise features, custom rules, or team licensing? Contact us at
-**gaphunterlabs@gmail.com**.
+- **Bugs and feature requests:** [GitHub Issues](https://github.com/GapHunterLabs/terraform-iam-privesc-companion/issues)
+- **Questions, or custom rules for a team's codebase:** **gaphunterlabs@gmail.com**
+- **Security vulnerabilities:** report privately as described in [SECURITY.md](SECURITY.md), not in a public issue.
+- **Privacy and network behavior:** [PRIVACY.md](PRIVACY.md)
 
 ## Development
 
