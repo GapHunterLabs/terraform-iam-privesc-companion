@@ -12,9 +12,8 @@
         project into a directed graph (role trust edges, managed/inline
         policy grants) and running a real BFS with cycle protection to
         the nearest admin-equivalent role -- the same graph-reachability
-        idea PMapper/Cloudsplaining use against a live AWS account,
-        applied statically to source before <code>terraform apply</code>
-        ever runs.</p>
+        idea PMapper applies to a live AWS account, applied statically to
+        source before <code>terraform apply</code> ever runs.</p>
         <p><b>Not a JSON parser</b> -- <code>jsonencode({...})</code>'s
         argument is HCL map/list syntax, walked via brace/bracket
         balancing, same technique as this catalog's own Terraform IAM

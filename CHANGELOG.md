@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [0.1.2]
+
+### Changed
+
+- Corrected the plugin description: Cloudsplaining was listed next to
+  PMapper as a tool that follows role-to-role escalation paths in a live
+  AWS account. Only PMapper does that; Cloudsplaining flags escalation
+  methods policy by policy and can also scan a policy file offline.
+
 ## [0.1.1]
 
 ### Fixed
