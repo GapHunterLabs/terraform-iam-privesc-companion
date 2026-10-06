@@ -1,0 +1,10 @@
+<html>
+<body>
+Reports a Terraform <code>aws_iam_role</code> that can reach an admin-equivalent role through a chain of
+<code>AssumeRole</code> trust relationships defined in the project.
+<!-- tooltip end -->
+<p>Each step may look harmless on its own, but the chain is a privilege-escalation path (CWE-269). All
+<code>.tf</code> files of the project are read into a graph of trust edges and policy grants, and a breadth-first
+search finds the nearest admin-equivalent role, before <code>terraform apply</code> runs.</p>
+</body>
+</html>
