@@ -49,4 +49,4 @@ If this changes, this file will be updated and the change noted in
 
 ## Contact
 
-Questions about this policy: **gaphunterlabs@gmail.com**
+Questions about this policy: **contact@gaphunterlabs.com**
